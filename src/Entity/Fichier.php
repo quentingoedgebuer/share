@@ -60,6 +60,11 @@ class Fichier
      */
     private $y;
 
+    /**
+     * @ORM\Column(type="string", length=50)
+     */
+    private $vraiNom;
+
     public function __construct()
     {
         $this->telechargements = new ArrayCollection();
@@ -72,12 +77,12 @@ class Fichier
         return $this->id;
     }
 
-    public function getNom(): ?string
+    public function getNom()
     {
         return $this->nom;
     }
 
-    public function setNom(string $nom): self
+    public function setNom($nom)
     {
         $this->nom = $nom;
 
@@ -96,7 +101,7 @@ class Fichier
         return $this;
     }
 
-    public function getExtension(): ?string
+    public function getExtension():?string
     {
         return $this->extension;
     }
@@ -221,6 +226,18 @@ class Fichier
                 $y->setFichierId(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getVraiNom(): ?string
+    {
+        return $this->vraiNom;
+    }
+
+    public function setVraiNom(string $vraiNom): self
+    {
+        $this->vraiNom = $vraiNom;
 
         return $this;
     }

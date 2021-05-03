@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{parent()}}Liste fichiers{% endblock %}
+
+{% block body %}
+{{parent()}}
+<style>
+img{
+  width:20px;
+}
+td{
+  color:black;
+}
+a{
+  color:black;
+}
+</style>
+<div class="container-fluid">   
+        <div class="row justify-content-center">
+            <h1 class="text-center text-primary p-4">Liste des fichiers</h1>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-8 p-4 m-0 text-primary">
+            <div class="table-responsive">
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col" class="font-weight-bold">Nom</th> 
+      <th>Taille</th>
+      <th>Extension</th>
+      <th>Prenom</th>
+      <th>Nom</th>
+      <th>Taille</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for fichier in fichiers %}
+    <tr class="{{ cycle(['table-primary', 'table-secondary'], loop.index0) }}">
+     <td><a href="{{path('telechargement_fichier',{'id':fichier.id})}}">{{fichier.vrainom}}</a></td>
+     <td>{{fichier.taille}}</td>
+     <td>{{fichier.extension}}</td>
+     <td>{{fichier.utilisateur.prenom}}</td>
+     <td>{{fichier.utilisateur.nom}}</td>
+     <td>{{fichier.taille}}</td>
+     <td><a href="{{path('liste_fichier',{'supp':fichier.id})}}" class="text-white"><span class="material-icons" title="Supprimer le fichier"><img src="modif_share.png"></span></a></td>
+      <td><a href="{{path('modif_fichier',{'id': fichier.id})}}" class="text-white"><span class="material-icons" title="Modifier un fichier"><img src="modifier.png"></span></a></td>
+    </tr>
+               
+    {% endfor %}
+ </tbody>
+</table> 
+</div>
+            </div>
+        </div>
+</div>
+{% endblock %}  

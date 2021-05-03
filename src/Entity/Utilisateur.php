@@ -43,12 +43,7 @@ class Utilisateur
      * @ORM\OneToMany(targetEntity=Fichier::class, mappedBy="utilisateur")
      */
     private $fichiers;
-
-    /**
-     * @ORM\ManyToOne(targetEntity=Fichier::class, inversedBy="utilisateurs")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $utilisateur_id;
+    
 
     public function __construct()
     {

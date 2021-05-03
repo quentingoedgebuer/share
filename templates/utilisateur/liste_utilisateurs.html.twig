@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{parent()}}Liste fichiers{% endblock %}
+
+{% block body %}
+{{parent()}}
+<style>
+img{
+  width:20px;
+}
+</style>
+<div class="container-fluid">   
+        <div class="row justify-content-center">
+            <h1 class="text-center text-primary p-4">Liste des utilisateurs</h1>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-8 p-4 m-0 text-primary">
+            <div class="table-responsive">
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col" class="font-weight-bold">Nom</th> 
+      <th>Prenom</th>
+      <th>date de naissance</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for utilisateur in utilisateurs %}
+    <tr class="{{ cycle(['table-primary', 'table-secondary'], loop.index0) }}">
+     <td>{{utilisateur.nom}}</td>
+     <td>{{utilisateur.prenom}}</td>
+     <td>{{utilisateur.datenaissance | date("d-m-y") }}</td>
+     
+    </tr>
+               
+    {% endfor %}
+ </tbody>
+</table> 
+</div>
+            </div>
+        </div>
+</div>
+{% endblock %}  
